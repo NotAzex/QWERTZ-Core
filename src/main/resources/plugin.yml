@@ -469,6 +469,9 @@ permissions:
   qwertzcore.host.falldamage:
     description: Allows the player to toggle fall damage
     default: op
+  qwertzcore.host.flow:
+    description: Allows the player to toggle Flowing
+    default: op
   qwertzcore.host.poll:
     description: Allows the player to create and manage polls
     default: op

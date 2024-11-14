@@ -82,7 +82,6 @@ public class EventManager {
             broadcastMessage(String.format("%s%s %sDIED!",
                     plugin.getConfigManager().getColor("colorDead"), player.getName(),
                     ChatColor.DARK_RED));
-            plugin.getSoundManager().broadcastConfigSound();
         } else if (!deadPlayers.contains(playerUUID)) {
             // If the player wasn't in either list (e.g., new player who died immediately)
             deadPlayers.add(playerUUID);
@@ -180,6 +179,5 @@ public class EventManager {
 
     private void broadcastMessage(String message) {
         Bukkit.broadcastMessage(QWERTZcore.CORE_ICON + " " + message);
-        plugin.getSoundManager().broadcastConfigSound();
     }
 }

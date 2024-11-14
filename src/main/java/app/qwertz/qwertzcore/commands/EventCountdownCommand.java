@@ -36,7 +36,6 @@ public class EventCountdownCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length != 1) {
             sender.sendMessage(plugin.getConfigManager().getColor("colorError") + "Usage: /eventcountdown <time|cancel>");
-            plugin.getSoundManager().playSoundToSender(sender);
             return true;
         }
 
@@ -73,7 +72,6 @@ public class EventCountdownCommand implements CommandExecutor {
             cancelCountdown();
             plugin.getScoreboardManager().updateCountdown("...");
             sender.sendMessage(plugin.getConfigManager().getColor("colorError") + "Invalid time. Please specify a time between 1 second and 60 minutes.");
-            plugin.getSoundManager().playSoundToSender(sender);
             return true;
         }
 
@@ -83,7 +81,6 @@ public class EventCountdownCommand implements CommandExecutor {
 
         startCountdown();
         sender.sendMessage(plugin.getConfigManager().getColor("colorSuccess") + "Event countdown started for " + formatTime(remainingSeconds));
-        plugin.getSoundManager().playSoundToSender(sender);
         return true;
     }
 
@@ -93,7 +90,6 @@ public class EventCountdownCommand implements CommandExecutor {
             public void run() {
                 if (remainingSeconds <= 0) {
                     Bukkit.broadcastMessage(QWERTZcore.CORE_ICON + plugin.getConfigManager().getColor("colorSuccess") + " Event " + plugin.getConfigManager().getEventName() + " is starting now!");
-                    plugin.getSoundManager().broadcastConfigSound();
                     updateScoreboard(0);
                     this.cancel();
                     return;
@@ -117,7 +113,6 @@ public class EventCountdownCommand implements CommandExecutor {
         String timeLeft = formatTime(remainingSeconds);
         Bukkit.broadcastMessage(QWERTZcore.CORE_ICON + plugin.getConfigManager().getColor("colorPrimary") + " Event " + plugin.getConfigManager().getEventName() +
                 " starts in " + ChatColor.RED + timeLeft + plugin.getConfigManager().getColor("colorPrimary") + "!");
-        plugin.getSoundManager().broadcastConfigSound();
     }
 
     private String formatTime(int seconds) {

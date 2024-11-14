@@ -38,14 +38,12 @@ public class TimerCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length != 1) {
             sender.sendMessage(plugin.getConfigManager().getColor("colorError") + "Usage: /timer <seconds> or /timer cancel");
-            plugin.getSoundManager().playSoundToSender(sender);
             return false;
         }
 
         if (args[0].equalsIgnoreCase("cancel")) {
             cancelTimer();
             sender.sendMessage(plugin.getConfigManager().getColor("colorPrimary") + "Timer cancelled.");
-            plugin.getSoundManager().playSoundToSender(sender);
             return true;
         }
 
@@ -53,14 +51,12 @@ public class TimerCommand implements CommandExecutor {
             int seconds = Integer.parseInt(args[0]);
             if (seconds <= 0) {
                 sender.sendMessage(plugin.getConfigManager().getColor("colorError") + "Please provide a positive number of seconds.");
-                plugin.getSoundManager().playSoundToSender(sender);
                 return false;
             }
             startTimer(seconds);
             return true;
         } catch (NumberFormatException e) {
             sender.sendMessage(plugin.getConfigManager().getColor("colorError") + "Invalid number format. Please provide a valid number of seconds.");
-            plugin.getSoundManager().playSoundToSender(sender);
             return false;
         }
     }
@@ -107,7 +103,6 @@ public class TimerCommand implements CommandExecutor {
 
     private void broadcastMessage(String message) {
         Bukkit.broadcastMessage(message);
-        plugin.getSoundManager().broadcastConfigSound();
     }
 
     private void broadcastActionBar(String message) {

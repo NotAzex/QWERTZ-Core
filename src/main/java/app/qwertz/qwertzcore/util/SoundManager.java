@@ -29,7 +29,6 @@ public class SoundManager {
                     player.playSound(player, Sound.valueOf(getConfigSound()), getSoundVolume(), getSoundPitch());}
             }
             catch(IllegalArgumentException e) {
-                System.out.println("The sound (or pitch/volume) in the config of QWERTZ Core is invalid. Please change it/them or the sounds won't play.");
             }
         }
     }

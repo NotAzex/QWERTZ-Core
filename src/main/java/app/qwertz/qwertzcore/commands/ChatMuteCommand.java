@@ -39,7 +39,6 @@ public class ChatMuteCommand implements CommandExecutor {
                 isMuting ? plugin.getConfigManager().getColor("colorDead") + "muted" : plugin.getConfigManager().getColor("colorAlive") + "unmuted",
                 plugin.getConfigManager().getColor("colorPrimary") + "!");
         Bukkit.broadcastMessage(message);
-        plugin.getSoundManager().broadcastConfigSound();
         return true;
     }
 }
